@@ -32,6 +32,8 @@ function adicionarAlimento() {
   let categoriaSelecionada = document.getElementById("categorias").value;
   if (alimento === "") {
     alert("Você precisa escrever um alimento para adicionar!");
+    document.getElementById('confirmacaoAlimentoAdicionado').innerHTML = ''
+
   } else if (categoriaSelecionada === "frutas") {
     frutas.push(alimento);
   } else if (categoriaSelecionada === "laticinios") {
@@ -129,10 +131,26 @@ function removerDoces() {
 }
 
 function listaPronta() {
-  document.getElementById(
+    document.getElementById(
     "lista"
-  ).innerHTML = `<h1>Lista de Compras</h1><br><br><h2>Frutas:</h2> <br> <p>${frutas}</p><br><br> <h2>Laticínios:</h2><br> ${laticinios}<br><br> <h2>Congelados:</h2> <br> <p>${congelados}</p><br><br> <h2>Doces:</h2> <br> <p>${doces}</p><br><button type="submit" onclick="adicionarMaisAlimentos()">Adicionar mais alimentos</button><br><br><button type="submit" onclick="removerListaFinal()">Remover alimentos</button> <button type="submit" onclick="limparLista()">Limpar a lista</button><br><br><a href="https://github.com/nathancanedo" target="_blank"><img class="logos" id="github" src="https://cdn-icons-png.flaticon.com/512/733/733609.png"/></a> <a href="https://www.linkedin.com/in/nathancanedo/" target="_blank"><img class="logos" id="linkedin" src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"/></a> <a href="https://www.instagram.com/nathancanedo/" target="_blank"><img class="logos" id="instagram" src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"/></a> <a href="https://twitter.com/nathancanedo" target="_blank"><img class="logos" id="twitter" src="https://cdn-icons-png.flaticon.com/512/1384/1384017.png"/></a>`;
-}
+  ).innerHTML = `<h1>Lista de Compras</h1><br><div id='frutas'><h2>Frutas:</h2></div><div id='laticinios'><h2>Laticínios:</h2></div><div id='congelados'><h2>Congelados:</h2></div><div id='doces'><h2>Doces:</h2></div><button type="submit" onclick="adicionarMaisAlimentos()">Adicionar mais alimentos</button><br><br><button type="submit" onclick="removerListaFinal()">Remover alimentos</button> <button type="submit" onclick="limparLista()">Limpar a lista</button><br><br><a href="https://github.com/nathancanedo" target="_blank"><img class="logos" id="github" src="https://cdn-icons-png.flaticon.com/512/733/733609.png"/></a> <a href="https://www.linkedin.com/in/nathancanedo/" target="_blank"><img class="logos" id="linkedin" src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"/></a> <a href="https://www.instagram.com/nathancanedo/" target="_blank"><img class="logos" id="instagram" src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"/></a> <a href="https://twitter.com/nathancanedo" target="_blank"><img class="logos" id="twitter" src="https://cdn-icons-png.flaticon.com/512/1384/1384017.png"/></a>`;
+  let divFrutas = document.getElementById('frutas')
+  let divLaticinios = document.getElementById('laticinios')
+  let divCongelados = document.getElementById('congelados')
+  let divDoces = document.getElementById('doces')
+  for (let iFru = 0; iFru < frutas.length; iFru++) {
+    divFrutas.innerHTML += `<p>${frutas[iFru]}</p>`
+  }
+  for (let iLat = 0; iLat < laticinios.length; iLat++) {
+    divLaticinios.innerHTML += `<p>${laticinios[iLat]}</p>`
+  }
+  for (let iCong = 0; iCong < congelados.length; iCong++) {
+    divCongelados.innerHTML += `<p>${congelados[iCong]}</p>`
+  }
+  for (let iDoc = 0; iDoc < doces.length; iDoc++){
+    divDoces.innerHTML += `<p>${doces[iDoc]}</p>`
+  }
+} 
 
 function adicionarMaisAlimentos() {
   telaInicial();
